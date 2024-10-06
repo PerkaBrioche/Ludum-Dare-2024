@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class EnnemyController : MonoBehaviour
 {
-    [SerializeField] public EnnemyData EnnemyData;
-    
     private float Ennemy_Life;
     private float Ennemy_Damage;
     private float Ennemy_Speed;
@@ -28,6 +26,7 @@ public class EnnemyController : MonoBehaviour
     
     private void Start()
     {
+        EnnemyData EnnemyData = GetComponent<EnemyDataController>().enemyData;
         CanTakeDamage = true;
 
         Ennemy_Life = EnnemyData.Ennemy_Life;
@@ -56,7 +55,7 @@ public class EnnemyController : MonoBehaviour
     public void GetDamage(Vector2 playerPosition, float DamageToTake)
     {
         EnemyAttackController.ResetTimer();
-        ShakeManager.instance.ShakeCamera(0.2f, 0.1f);
+        ShakeManager.instance.ShakeCamera(0.35f, 0.1f);
         Ennemy_Life -= DamageToTake;
         if (Ennemy_Life <= 0)
         {

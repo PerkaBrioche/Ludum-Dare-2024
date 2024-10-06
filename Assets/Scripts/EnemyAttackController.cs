@@ -11,25 +11,25 @@ public class EnemyAttackController : MonoBehaviour
 
     private void Awake()
     {
-        EnnemyData = transform.parent.transform.parent.GetComponent<EnnemyController>().EnnemyData;
+        EnnemyData = transform.parent.transform.parent.GetComponent<EnemyDataController>().enemyData;
         ResetTimer();
+        PlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" || other.tag == "PlayerBool")
         {
-            if (PlayerController == null)
-            {
-                PlayerController = other.GetComponent<PlayerController>();
-            }
             ReduceTimer();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        ResetTimer();
+        if (other.tag == "Player" || other.tag == "PlayerBool")
+        {
+            ResetTimer();
+        }
     }
 
     private void ReduceTimer()
@@ -44,10 +44,12 @@ public class EnemyAttackController : MonoBehaviour
             ResetTimer();
         }
     }
+    
 
     public void ResetTimer()
     {
         TimerAttack = EnnemyData.Ennemy_AttackWindow;
+        Debug.LogError("TimerAttack = "+ TimerAttack);
     }
     private void DamagePlayer()
     {
