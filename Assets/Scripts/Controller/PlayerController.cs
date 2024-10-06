@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     [Header("OTHER")] 
     public ParticleSystem PART_InkParticule;
 
+    public GameObject OBJ_UserInterface;
+
     void Start()
     {
         if (Instance == null)
@@ -94,15 +96,15 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        VolumeManger.Instance.PlayAnim(1);
         CanBeDamage = false;
-        PlayerManager.Instance.PLAYER_Life -= ennemyData.Ennemy_Damage;
+        InkManager.Instance.Ink -= ennemyData.Ennemy_Damage;
 
-        if (PlayerManager.Instance.PLAYER_Life <= 0)
+        if (InkManager.Instance.Ink <= 0)
         {
             Dead();
             return;
         }
+        VolumeManger.Instance.PlayAnim(1);
 
         StartCoroutine(CooldownGod());
 
@@ -114,7 +116,7 @@ public class PlayerController : MonoBehaviour
         knockbackEndTime = Time.time + knockbackDuration;
 
         StartCoroutine(SmoothKnockback());
-        ShakeManager.instance.ShakeCamera(0.7f, 0.2f);
+        ShakeManager.instance.ShakeCamera(0.7f, 0.3f);
     }
 
     private IEnumerator SmoothKnockback()
@@ -139,8 +141,10 @@ public class PlayerController : MonoBehaviour
         CanBeDamage = true;
     }
 
-    private void Dead()
+    public void Dead()
     {
+        OBJ_UserInterface.SetActive(false);
+        VolumeManger.Instance.PlayAnim(2);
         TimeManager.instance.SlowMotion(0, 1);
     }
 
@@ -148,5 +152,6 @@ public class PlayerController : MonoBehaviour
     {
         PART_InkParticule.Play();
         VolumeManger.Instance.PlayAnim(0);
+        InkManager.Instance.GainInk(Random.Range(2,3));
     }
 }

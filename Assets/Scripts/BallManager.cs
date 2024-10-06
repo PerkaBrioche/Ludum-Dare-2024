@@ -25,7 +25,7 @@ public class BallManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SpawnBall();
+            InkManager.Instance.NewPAlier();
         }
         if (Input.GetKeyDown("e"))
         {
@@ -35,21 +35,39 @@ public class BallManager : MonoBehaviour
 
     public void SpawnBall()
     {
+        print("SPAWWNNNNN");
         var BallInstance = Instantiate(OBJ_Ball, TRA_Player.position, OBJ_Ball.transform.rotation, transform);
-        
         BallInstance.GetComponent<BallController>().SpaceFloat = LIST_SpaceFloat[LIST_Ball.Count];
         LIST_Ball.Add( BallInstance.GetComponent<BallController>());
-        
         BallInstance.GetComponent<BallController>().target = TRA_Player;
         BallInstance.GetComponent<BallController>().smoothTime = 0.2f * LIST_Ball.Count;
     }
 
     public void DestroyBall()
     {
-        if (LIST_Ball[LIST_Ball.Count-1] != null)
+        if (LIST_Ball.Count > 1)
         {
-            Destroy(LIST_Ball[LIST_Ball.Count -1].gameObject);
+            if (LIST_Ball[LIST_Ball.Count-1] != null)
+            {
+                Destroy(LIST_Ball[LIST_Ball.Count -1].gameObject);
+                LIST_Ball.RemoveAt(LIST_Ball.Count -1);
+            }
+        }
+    }
+
+    public void BallFall()
+    {
+        if (LIST_Ball.Count > 1)
+        {
+            LIST_Ball[LIST_Ball.Count-1].Fall();
             LIST_Ball.RemoveAt(LIST_Ball.Count -1);
         }
+        else
+        {
+            LIST_Ball[0].Fall();
+            PlayerController.Instance.Dead();
+            LIST_Ball.RemoveAt(LIST_Ball.Count);
+        }
+
     }
 }

@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 768793189444155628}
   - component: {fileID: 1162026393533492021}
   - component: {fileID: 8511815680859620595}
+  - component: {fileID: -6044923941121271829}
   m_Layer: 0
   m_Name: ENNEMY_Fantassin
   m_TagString: Enemy
@@ -290,7 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39724cede498e34468ddbedc63630c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnnemyData: {fileID: 11400000, guid: 014db75496176a648ab642932ebd838c, type: 2}
   knockbackDuration: 1.2
   EnemyAttackController: {fileID: 1650841655879089830}
   InkSpawner: {fileID: 1063476258980038571, guid: 331caaf9a071dd14bb9e6c2b82d8c93c, type: 3}
@@ -412,3 +412,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-6044923941121271829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7662483983553767154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e86924824f37e34391ffcce1c0ec112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 014db75496176a648ab642932ebd838c, type: 2}

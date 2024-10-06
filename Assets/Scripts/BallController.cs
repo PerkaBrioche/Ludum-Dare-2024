@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
@@ -7,9 +8,18 @@ public class BallController : MonoBehaviour
     public float SpaceFloat = 0.3F; 
     private Vector2 velocity = Vector2.zero;
 
+    private bool Following;
+
+    private void Start()
+    {
+        Following = true;
+    }
+
     void Update()
     {
+        if(!Following){return;}
         Vector2 playerDirection = GetPlayerFacingDirection();
+        
         if (PlayerController.Instance.IsMoving())
         {
             transform.position = Vector2.SmoothDamp(transform.position, GetSpace(0), ref velocity, smoothTime);
@@ -29,5 +39,13 @@ public class BallController : MonoBehaviour
     private Vector2 GetSpace(float space)
     {
         return target.TransformPoint(new Vector2(space, space));
+    }
+
+    public void Fall()
+    {
+        var rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 1;
+        Destroy(gameObject,3);
+        Following = false;
     }
 }

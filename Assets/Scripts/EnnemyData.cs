@@ -7,7 +7,7 @@ public class EnnemyData : ScriptableObject
 {
     public float Ennemy_Life;
     public float Ennemy_AttackWindow;
-    public float Ennemy_Damage;
+    public int Ennemy_Damage;
     public float Ennemy_Speed;
     public float knockbackForce ;
 }
