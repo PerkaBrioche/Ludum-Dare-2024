@@ -9,9 +9,10 @@ public class BallController : MonoBehaviour
     private Vector2 velocity = Vector2.zero;
 
     private bool Following;
-
+    private SpriteRenderer spriteRenderer;
     private void Start()
     {
+        spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         Following = true;
     }
 
@@ -45,6 +46,7 @@ public class BallController : MonoBehaviour
     {
         var rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 1;
+        spriteRenderer.sortingOrder = -1;
         Destroy(gameObject,3);
         Following = false;
     }

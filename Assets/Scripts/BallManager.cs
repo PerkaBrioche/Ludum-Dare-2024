@@ -13,6 +13,7 @@ public class BallManager : MonoBehaviour
     public List<BallController> LIST_Ball;
     public List<float> LIST_SpaceFloat;
 
+    public LifeBallImage LifeBallImage;
     private void Awake()
     {
         if (Instance == null)
@@ -35,12 +36,12 @@ public class BallManager : MonoBehaviour
 
     public void SpawnBall()
     {
-        print("SPAWWNNNNN");
         var BallInstance = Instantiate(OBJ_Ball, TRA_Player.position, OBJ_Ball.transform.rotation, transform);
         BallInstance.GetComponent<BallController>().SpaceFloat = LIST_SpaceFloat[LIST_Ball.Count];
         LIST_Ball.Add( BallInstance.GetComponent<BallController>());
         BallInstance.GetComponent<BallController>().target = TRA_Player;
         BallInstance.GetComponent<BallController>().smoothTime = 0.2f * LIST_Ball.Count;
+        LifeBallImage.UpdateLife(LIST_Ball.Count);
     }
 
     public void DestroyBall()
@@ -53,6 +54,7 @@ public class BallManager : MonoBehaviour
                 LIST_Ball.RemoveAt(LIST_Ball.Count -1);
             }
         }
+        LifeBallImage.UpdateLife(LIST_Ball.Count);
     }
 
     public void BallFall()

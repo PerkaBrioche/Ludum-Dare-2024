@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
     private float inputY;
     [Space(10)] 
     [Header("OTHER")] 
-    public ParticleSystem PART_InkParticule;
-
+    
+    public GameObject OBJ_InkParticule;
     public GameObject OBJ_UserInterface;
 
     void Start()
@@ -150,8 +150,9 @@ public class PlayerController : MonoBehaviour
 
     public void GetInk()
     {
-        PART_InkParticule.Play();
+        Instantiate(OBJ_InkParticule, BallManager.Instance.LIST_Ball[0].transform.position, OBJ_InkParticule.transform.rotation,
+            BallManager.Instance.LIST_Ball[0].transform);
         VolumeManger.Instance.PlayAnim(0);
-        InkManager.Instance.GainInk(Random.Range(2,3));
+        InkManager.Instance.GainInk(Random.Range(2,4));
     }
 }

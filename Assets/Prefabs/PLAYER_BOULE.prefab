@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OBJ_Rotate: {fileID: 6727612415741772417}
   COLLIDER2D_TriggerAttack: {fileID: 4420049663921129719}
+  OBJ_Attack: {fileID: 1199282965571872635, guid: cc2dab3ac37b35944a68261b081cb29c, type: 3}
   BOOL_CanAttack: 1
   LIST_RotationList:
   - 0
@@ -260,8 +261,8 @@ Transform:
   m_GameObject: {fileID: 6285729558955588119}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0011, y: 1.43, z: 0}
-  m_LocalScale: {x: 1.5200391, y: 1.2311, z: 1}
+  m_LocalPosition: {x: 0.0101, y: 1.4188, z: 0}
+  m_LocalScale: {x: 1.6910098, y: 1.2085708, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1495265766632560112}
@@ -273,7 +274,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6285729558955588119}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

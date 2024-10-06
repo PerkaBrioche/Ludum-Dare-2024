@@ -9,6 +9,8 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private BoxCollider2D COLLIDER2D_TriggerAttack;
     private GetFacing GetFacing;
 
+    public GameObject OBJ_Attack;
+
     /// <summary>
     /// ////////////////
     /// </summary>
@@ -48,6 +50,8 @@ public class PlayerAttackManager : MonoBehaviour
     private IEnumerator Attack()
     {
         StartCoroutine(GetCooldown());
+        var Attack = Instantiate(OBJ_Attack, transform.position, OBJ_Rotate.transform.rotation, OBJ_Rotate.transform);
+        Destroy(Attack, 0.7f);
         COLLIDER2D_TriggerAttack.enabled = true;
         yield return new WaitForSeconds(0.2f);
         COLLIDER2D_TriggerAttack.enabled = false;

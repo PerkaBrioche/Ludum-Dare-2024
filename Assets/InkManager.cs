@@ -33,7 +33,7 @@ public class InkManager : MonoBehaviour
 
     private void Update()
     {
-        if (Ink > Palier[ActualPalier+1])
+        if (Ink > Palier[ActualPalier+1] && ActualPalier < Palier.Count)
         {
             NewPAlier();
         }
@@ -46,7 +46,7 @@ public class InkManager : MonoBehaviour
     public void NewPAlier()
     {
         ActualPalier++;
-        SmoothSlider.NewValue(Palier[ActualPalier+1], Ink);
+        SmoothSlider.NewValue(Palier[ActualPalier+1], Palier[ActualPalier]);
         BallManager.Instance.SpawnBall();
     }
 
@@ -62,7 +62,7 @@ public class InkManager : MonoBehaviour
         }
 
         ActualPalier--;
-        SmoothSlider.NewValue(Palier[ActualPalier+1], Ink);
+        SmoothSlider.NewValue(Palier[ActualPalier+1], Palier[ActualPalier]);
         
         if(fall){return;}
         BallManager.Instance.DestroyBall();
