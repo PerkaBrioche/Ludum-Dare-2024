@@ -21,19 +21,6 @@ public class BallManager : MonoBehaviour
             Instance = this;
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            InkManager.Instance.NewPAlier();
-        }
-        if (Input.GetKeyDown("e"))
-        {
-            DestroyBall();
-        }
-    }
-
     public void SpawnBall()
     {
         var BallInstance = Instantiate(OBJ_Ball, TRA_Player.position, OBJ_Ball.transform.rotation, transform);

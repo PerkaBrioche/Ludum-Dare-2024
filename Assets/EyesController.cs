@@ -62,6 +62,7 @@ public class EyesController : MonoBehaviour
         {
             if (PlayerController.Instance.IsMoving())
             {
+                SoundManager.Instance.PlaySoundOeil(1);
                 Attaque();
                 CheckingEyes = false;
                 return;
@@ -74,11 +75,7 @@ public class EyesController : MonoBehaviour
             }
         }
     }
-
-    private void OpenEyes()
-    {
-
-    }
+    
     private void CloseEyes()
     {
         SpriteController.UpdateSprite(0);

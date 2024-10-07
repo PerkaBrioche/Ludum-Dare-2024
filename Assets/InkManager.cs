@@ -45,6 +45,7 @@ public class InkManager : MonoBehaviour
 
     public void NewPAlier()
     {
+        SoundManager.Instance.PlaySoundEncre(2);
         ActualPalier++;
         SmoothSlider.NewValue(Palier[ActualPalier+1], Palier[ActualPalier]);
         BallManager.Instance.SpawnBall();

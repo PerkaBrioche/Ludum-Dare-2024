@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     [Space(10)]
     public Vector2 VECTOR2_movement;
+
+    public Animator ANIM_TextDeath;
     [Space(10)]
     [Header("SMOOTH DEPLACEMENT")]
     public float acceleration = 10f;
@@ -104,6 +106,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        
+        SoundManager.Instance.PlaySoundEncre(6);
         CanBeDamage = false;
         InkManager.Instance.Ink -= ennemyData.Ennemy_Damage;
 
@@ -155,12 +159,13 @@ public class PlayerController : MonoBehaviour
     {
         OBJ_UserInterface.SetActive(false);
         VolumeManger.Instance.PlayAnim(2, true);
+        ANIM_TextDeath.Play("ShowTextDeath");
         Destroy(gameObject);
     }
     public void GetInk()
     {
-        Instantiate(OBJ_InkParticule, BallManager.Instance.LIST_Ball[0].transform.position, OBJ_InkParticule.transform.rotation,
-            BallManager.Instance.LIST_Ball[0].transform);
+        SoundManager.Instance.PlaySoundEncre(Random.Range(3,6));
+        Instantiate(OBJ_InkParticule, BallManager.Instance.LIST_Ball[0].transform.position, OBJ_InkParticule.transform.rotation, BallManager.Instance.LIST_Ball[0].transform);
         VolumeManger.Instance.PlayAnim(0);
         InkManager.Instance.GainInk(Random.Range(2,4));
     }

@@ -20,8 +20,7 @@ public class EnnemyController : MonoBehaviour
     private bool isKnockback = false;
     public float knockbackEndTime; 
     public float KnockBackSmoothness;
-
-    // Ajoute le Rigidbody2D pour gérer le mouvement
+    public AudioClip EnmemyDie;
     private Rigidbody2D rb;
     
     private void Start()
@@ -38,7 +37,6 @@ public class EnnemyController : MonoBehaviour
     
     private void FixedUpdate()
     {
-        // Appliquer le knockback si en état de knockback
         if (isKnockback)
         {
             rb.MovePosition(rb.position + knockbackVelocity * Time.fixedDeltaTime);
@@ -95,5 +93,6 @@ public class EnnemyController : MonoBehaviour
     {
         Instantiate(InkSpawner, transform.position, InkSpawner.transform.rotation);
         Destroy(gameObject);
+        SoundManager.Instance.PlaySoundClip(EnmemyDie);
     }
 }

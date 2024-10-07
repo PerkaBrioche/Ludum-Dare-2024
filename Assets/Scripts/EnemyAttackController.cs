@@ -13,7 +13,6 @@ public class EnemyAttackController : MonoBehaviour
 
     private bool PlayerHere;
 
-
     private void Start()
     {
         EnnemyData = transform.parent.transform.parent.GetComponent<EnemyDataController>().enemyData;
@@ -78,8 +77,14 @@ public class EnemyAttackController : MonoBehaviour
     private void DamagePlayer()
     {
         PlayerController.GetDamage(EnnemyData, transform.transform.position);
-
-        if(SoliderAnim == null){return;}
-        SoliderAnim.SetTrigger("Attack");
+        if (SoliderAnim == null)
+        {
+            SoundManager.Instance.PlaySoundOeil(0);
+        }
+        else
+        {
+            SoliderAnim.SetTrigger("Attack");
+            SoundManager.Instance.PlaySoundFantassin(0);
+        }
     }
 }

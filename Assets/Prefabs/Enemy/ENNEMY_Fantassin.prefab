@@ -391,6 +391,7 @@ MonoBehaviour:
   InkSpawner: {fileID: 1063476258980038571, guid: 331caaf9a071dd14bb9e6c2b82d8c93c, type: 3}
   knockbackEndTime: 0.2
   KnockBackSmoothness: 0.6
+  EnmemyDie: {fileID: 8300000, guid: 6fc7c308c2277944da2aff241571ba01, type: 3}
 --- !u!114 &6978988274531874350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +407,7 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 366.2
   updatePathRate: 0.2
-  repathDistance: 0.75
+  repathDistance: 1
   distancetest: 0.3
 --- !u!114 &768793189444155628
 MonoBehaviour:

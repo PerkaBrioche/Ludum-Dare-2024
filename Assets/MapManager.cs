@@ -7,11 +7,13 @@ using Pathfinding; // Pour utiliser AstarPath
 
 public class MapManager : MonoBehaviour
 {
+    public Animator Anim_Page;
     public Transform MapSpawnerTransform;
     public int HandSpawnChance = 5;
     public static MapManager Instance;
     public int StageCompleted;
     public TextMeshProUGUI TMP_Chapter;
+    public TextMeshProUGUI TmpDeathTEXT;
 
     public List<GameObject> LIST_MapInstance;
     public GameObject OldMap;
@@ -39,7 +41,7 @@ public class MapManager : MonoBehaviour
         StageCompleted++;
         UpdateChapter();
         Destroy(OldMap);
-        NewMap();
+        StartCoroutine(TurnPage());
     }
 
     private void NewMap()
@@ -48,18 +50,14 @@ public class MapManager : MonoBehaviour
         {
             DestroyInfo(OldMap.GetComponent<GridManager>());
         }
-
-        OldMap = Instantiate(LIST_MapInstance[Random.Range(0, LIST_MapInstance.Count)], 
-                             MapSpawnerTransform.position, 
-                             Quaternion.Euler(0, 0, 0), 
-                             MapSpawnerTransform);
+        
+        OldMap = Instantiate(LIST_MapInstance[Random.Range(0, LIST_MapInstance.Count)], MapSpawnerTransform.position, Quaternion.Euler(0, 0, 0), MapSpawnerTransform);
         InitializeMapsParameters();
         StartCoroutine(ScanPathfindingGrid());
     }
 
     private void InitializeMapsParameters()
     {
-
         Transform Pos = OldMap.GetComponent<GridManager>().PlayerSpawner.transform;
         Player.transform.position = Pos.position;
         for (int i = 0; i < BallManager.Instance.LIST_Ball.Count; i++)
@@ -71,6 +69,7 @@ public class MapManager : MonoBehaviour
     public void UpdateChapter()
     {
         TMP_Chapter.text = "Chapter " + StageCompleted;
+        TmpDeathTEXT.text = "You've read " + StageCompleted + " Chapters";
     }
 
     private void TryingToHand()
@@ -91,6 +90,14 @@ public class MapManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         AstarPath.active.Scan();
     }
+    
+    private IEnumerator TurnPage()
+    {
+        SoundManager.Instance.PlaySoundpoing(1);
+        Anim_Page.Play("PageTurn");
+        yield return new WaitForSeconds(0.25f);
+        NewMap();
+    }
 
     private void DestroyInfo(GridManager gridManager)
     {
@@ -101,6 +108,10 @@ public class MapManager : MonoBehaviour
         for (int i = 0; i < gridManager.List_EnemySpawner.Count; i++)
         {
             Destroy(gridManager.List_EnemySpawner[i]);
+        }
+        for (int i = 0; i < gridManager.List_Decorations.Count; i++)
+        {
+            Destroy(gridManager.List_Decorations[i]);
         }
     }
 }

@@ -458,6 +458,7 @@ MonoBehaviour:
   InkSpawner: {fileID: 1063476258980038571, guid: 331caaf9a071dd14bb9e6c2b82d8c93c, type: 3}
   knockbackEndTime: 0
   KnockBackSmoothness: 0.8
+  EnmemyDie: {fileID: 8300000, guid: 2999eedd309705f4fa065cf28117187e, type: 3}
 --- !u!1 &7864382597600931484
 GameObject:
   m_ObjectHideFlags: 0

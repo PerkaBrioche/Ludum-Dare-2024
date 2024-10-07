@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerAttackManager : MonoBehaviour
 {
@@ -54,6 +55,7 @@ public class PlayerAttackManager : MonoBehaviour
 
     private IEnumerator Attack()
     {
+        SoundManager.Instance.PlaySoundEncre(Random.Range(0,2));
         StartCoroutine(GetCooldown());
         var Attack = Instantiate(OBJ_Attack, transform.position, OBJ_Rotate.transform.rotation, OBJ_Rotate.transform);
         Destroy(Attack, 0.7f);
