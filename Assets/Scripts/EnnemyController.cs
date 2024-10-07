@@ -93,7 +93,7 @@ public class EnnemyController : MonoBehaviour
         return Knock;
     }
 
-    private void Die()
+    public void Die()
     {
         Instantiate(InkSpawner, transform.position, InkSpawner.transform.rotation);
         Destroy(gameObject);
