@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7538509259709986692}
   - component: {fileID: 2584446505796552789}
-  - component: {fileID: 8527276159602773157}
   - component: {fileID: 1672134461696748989}
+  - component: {fileID: 4846546654698382117}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -86,8 +86,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &8527276159602773157
-CircleCollider2D:
+--- !u!114 &1672134461696748989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851516651652989256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad9fe3a00e17d04e9561d1d210a5b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LIST_Sprite:
+  - {fileID: 21300000, guid: c2679b0576fd499479049f41b6e24e80, type: 3}
+  - {fileID: 21300000, guid: 725b54608d06dd148992da85158d360c, type: 3}
+  - {fileID: 21300000, guid: 1f4c526989ee1a6418ca73db43b73c7c, type: 3}
+--- !u!61 &4846546654698382117
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,25 +134,19 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.025828118, y: 0.0029783775}
+  m_Offset: {x: -0.026706874, y: 0.016867593}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.95, y: 0.66}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.3506693
---- !u!114 &1672134461696748989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851516651652989256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad9fe3a00e17d04e9561d1d210a5b0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LIST_Sprite:
-  - {fileID: 21300000, guid: c2679b0576fd499479049f41b6e24e80, type: 3}
-  - {fileID: 21300000, guid: 725b54608d06dd148992da85158d360c, type: 3}
-  - {fileID: 21300000, guid: 1f4c526989ee1a6418ca73db43b73c7c, type: 3}
+  m_Size: {x: 0.5929719, y: 0.36763027}
+  m_EdgeRadius: 0
 --- !u!1 &6923543292850476662
 GameObject:
   m_ObjectHideFlags: 0

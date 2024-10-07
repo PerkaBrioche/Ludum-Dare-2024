@@ -11,7 +11,7 @@ public class ExitDoor : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            print("ENDGame");
+            MapManager.Instance.EndStage();
         }
     }
 }

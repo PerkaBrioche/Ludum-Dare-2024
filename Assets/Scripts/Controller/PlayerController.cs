@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float knockbackEndTime;
     [SerializeField] private bool isKnockback = false;
 
+    private bool DeadPlayer;
+
     [Space(20)]
     public static PlayerController Instance;
 
@@ -34,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        
+        
         if (Instance == null)
         {
             Instance = this;
@@ -91,6 +95,10 @@ public class PlayerController : MonoBehaviour
 
     public void GetDamage(EnnemyData ennemyData, Vector3 ennemyTransform)
     {
+        if (DeadPlayer)
+        {
+            return;
+        }
         if (!CanBeDamage)
         {
             return;
@@ -99,11 +107,7 @@ public class PlayerController : MonoBehaviour
         CanBeDamage = false;
         InkManager.Instance.Ink -= ennemyData.Ennemy_Damage;
 
-        if (InkManager.Instance.Ink <= 0)
-        {
-            Dead();
-            return;
-        }
+
         VolumeManger.Instance.PlayAnim(1);
 
         StartCoroutine(CooldownGod());
@@ -117,6 +121,12 @@ public class PlayerController : MonoBehaviour
 
         StartCoroutine(SmoothKnockback());
         ShakeManager.instance.ShakeCamera(0.7f, 0.3f);
+        if (InkManager.Instance.Ink <= 0)
+        {
+            DeadPlayer = true;
+            TimeManager.instance.SlowMotion(0.3f,0.5f);
+            Dead();
+        }
     }
 
     private IEnumerator SmoothKnockback()
@@ -144,8 +154,8 @@ public class PlayerController : MonoBehaviour
     public void Dead()
     {
         OBJ_UserInterface.SetActive(false);
-        VolumeManger.Instance.PlayAnim(2);
-        TimeManager.instance.SlowMotion(0, 1);
+        VolumeManger.Instance.PlayAnim(2, true);
+        Destroy(gameObject);
     }
     public void GetInk()
     {

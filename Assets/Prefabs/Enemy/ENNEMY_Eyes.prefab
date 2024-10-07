@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 6993191301322097223}
   - component: {fileID: 7518722056133546934}
   - component: {fileID: 5711905149995091245}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ENNEMY_Eyes
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -440,6 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 17c84a25fb08bd349a502f9e9e893acf, type: 2}
+  Fantassin: 0
 --- !u!114 &5711905149995091245
 MonoBehaviour:
   m_ObjectHideFlags: 0

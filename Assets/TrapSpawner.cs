@@ -16,7 +16,7 @@ public class TrapSpawner : MonoBehaviour
     {
         if (Random.Range(1, TrapSpawnChanceMax+1) == 1)
         {
-            Instantiate(OBJ_Trap, transform.position, OBJ_Trap.transform.rotation);
+            Instantiate(OBJ_Trap, transform.position, OBJ_Trap.transform.rotation, transform);
         }
     }
 }

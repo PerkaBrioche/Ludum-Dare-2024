@@ -32,6 +32,7 @@ public class EnnemySpawner : MonoBehaviour
 
     public void SpawnEnnemy()
     {
+        ChanceToSpawn -= (int)(MapManager.Instance.StageCompleted / 5);
         if (!SurelySpawn)
         {
             if (Random.Range(0, ChanceToSpawn) != 0)
@@ -49,7 +50,7 @@ public class EnnemySpawner : MonoBehaviour
         }
 
         var RANDOM = Random.Range(0, EnnemyList.Count);
-        Instantiate(EnnemyList[RANDOM], transform.position, EnnemyList[RANDOM].transform.rotation);
+        Instantiate(EnnemyList[RANDOM], transform.position, EnnemyList[RANDOM].transform.rotation, transform);
     }
 
 }

@@ -26,9 +26,9 @@ public class ScaleManger : MonoBehaviour
 
     public void UpdateScale()
     {
-        FantassinData.Ennemy_Life += 4;
+        FantassinData.Ennemy_Life += 2;
         FantassinData.Ennemy_Damage++;        
-        EyesData.Ennemy_Life += 4;
+        EyesData.Ennemy_Life += 2;
         EyesData.Ennemy_Damage++;
     }
     public EnnemyData GetFantassinData()

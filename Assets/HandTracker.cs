@@ -20,7 +20,7 @@ public class HandTracker : MonoBehaviour
     public bool IsFollowing;
 
     public GameObject OBJ_Hand;
-    private bool TryingToSmash;
+    public bool TryingToSmash;
 
 
     public void InitliazeHand()

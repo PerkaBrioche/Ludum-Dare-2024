@@ -29,12 +29,10 @@ public class EnnemyController : MonoBehaviour
         EnnemyData EnnemyData = GetComponent<EnemyDataController>().enemyData;
         CanTakeDamage = true;
 
-        Ennemy_Life = EnnemyData.Ennemy_Life;
-        Ennemy_Damage = EnnemyData.Ennemy_Damage;
+        Ennemy_Life = EnnemyData.Ennemy_Life + 0.5f;
+        Ennemy_Damage = EnnemyData.Ennemy_Damage + 0.5f;
         Ennemy_Speed = EnnemyData.Ennemy_Speed;
         knockbackForce = EnnemyData.knockbackForce;
-
-        // Initialisation du Rigidbody2D
         rb = GetComponent<Rigidbody2D>();
     }
     

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cbe7252a31c00e349a4127538cd0d18b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 1162026393533492021}
   - component: {fileID: 8511815680859620595}
   - component: {fileID: -6044923941121271829}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ENNEMY_Fantassin
   m_TagString: Enemy
   m_Icon: {fileID: 0}

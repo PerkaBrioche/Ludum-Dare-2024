@@ -1,18 +1,22 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Pathfinding; // Pour utiliser AstarPath
 
 public class MapManager : MonoBehaviour
 {
+    public Transform MapSpawnerTransform;
     public int HandSpawnChance = 5;
     public static MapManager Instance;
     public int StageCompleted;
     public TextMeshProUGUI TMP_Chapter;
 
     public List<GameObject> LIST_MapInstance;
+    public GameObject OldMap;
+    public GameObject Player;
+
     private void Awake()
     {
         if (Instance == null)
@@ -23,17 +27,48 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateChatper();
+        UpdateChapter();
+        NewMap();
     }
 
-    public void NewMap()
+    public void EndStage()
     {
         HandTracker.Instance.StopHand();
+        ScaleManger.Instance.UpdateScale();
+        TryingToHand();
         StageCompleted++;
-        UpdateChatper();
+        UpdateChapter();
+        Destroy(OldMap);
+        NewMap();
     }
 
-    public void UpdateChatper()
+    private void NewMap()
+    {
+        if (OldMap != null)
+        {
+            DestroyInfo(OldMap.GetComponent<GridManager>());
+        }
+
+        OldMap = Instantiate(LIST_MapInstance[Random.Range(0, LIST_MapInstance.Count)], 
+                             MapSpawnerTransform.position, 
+                             Quaternion.Euler(0, 0, 0), 
+                             MapSpawnerTransform);
+        InitializeMapsParameters();
+        StartCoroutine(ScanPathfindingGrid());
+    }
+
+    private void InitializeMapsParameters()
+    {
+
+        Transform Pos = OldMap.GetComponent<GridManager>().PlayerSpawner.transform;
+        Player.transform.position = Pos.position;
+        for (int i = 0; i < BallManager.Instance.LIST_Ball.Count; i++)
+        {
+            BallManager.Instance.LIST_Ball[i].transform.position = Pos.position;
+        }
+    }
+
+    public void UpdateChapter()
     {
         TMP_Chapter.text = "Chapter " + StageCompleted;
     }
@@ -48,6 +83,24 @@ public class MapManager : MonoBehaviour
         else
         {
             HandSpawnChance--;
+        }
+    }
+
+    private IEnumerator ScanPathfindingGrid()
+    {
+        yield return new WaitForEndOfFrame();
+        AstarPath.active.Scan();
+    }
+
+    private void DestroyInfo(GridManager gridManager)
+    {
+        for (int i = 0; i < gridManager.List_TrapSpawner.Count; i++)
+        {
+            Destroy(gridManager.List_TrapSpawner[i]);
+        }
+        for (int i = 0; i < gridManager.List_EnemySpawner.Count; i++)
+        {
+            Destroy(gridManager.List_EnemySpawner[i]);
         }
     }
 }
