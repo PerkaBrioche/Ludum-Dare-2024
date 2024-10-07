@@ -260,7 +260,7 @@ Transform:
   m_GameObject: {fileID: 1395147006334481610}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.58, y: -6.23, z: 0.09507769}
+  m_LocalPosition: {x: 1.18, y: -5.88, z: 0.09507769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -281,7 +281,7 @@ MonoBehaviour:
   INT_Fantassin: 1
   INT_Eyes: 0
   SurelySpawn: 0
-  ChanceToSpawn: 2
+  ChanceToSpawn: 3
   EnnemyPrefabs:
   - {fileID: 7662483983553767154, guid: fa4792e7805ac7a43a2a3be58b7ebe86, type: 3}
   - {fileID: 6552878737517331220, guid: 2aabcd7eafb6ef246abb75b828424e14, type: 3}
@@ -312,7 +312,7 @@ Transform:
   m_GameObject: {fileID: 1826060430250144262}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.79, y: -7.93, z: 0.09507769}
+  m_LocalPosition: {x: -1.84, y: -7.53, z: 0.09507769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -333,7 +333,7 @@ MonoBehaviour:
   INT_Fantassin: 1
   INT_Eyes: 0
   SurelySpawn: 0
-  ChanceToSpawn: 2
+  ChanceToSpawn: 3
   EnnemyPrefabs:
   - {fileID: 7662483983553767154, guid: fa4792e7805ac7a43a2a3be58b7ebe86, type: 3}
   - {fileID: 6552878737517331220, guid: 2aabcd7eafb6ef246abb75b828424e14, type: 3}
@@ -2986,7 +2986,7 @@ Transform:
   m_GameObject: {fileID: 2395340466311998817}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.79, y: -1.57, z: 0.09507769}
+  m_LocalPosition: {x: -13.11, y: -0.74, z: 0.09507769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3006,8 +3006,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   INT_Fantassin: 1
   INT_Eyes: 0
-  SurelySpawn: 0
-  ChanceToSpawn: 2
+  SurelySpawn: 1
+  ChanceToSpawn: 0
   EnnemyPrefabs:
   - {fileID: 7662483983553767154, guid: fa4792e7805ac7a43a2a3be58b7ebe86, type: 3}
   - {fileID: 6552878737517331220, guid: 2aabcd7eafb6ef246abb75b828424e14, type: 3}
@@ -4072,7 +4072,7 @@ Transform:
   m_GameObject: {fileID: 2730784428614992508}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.46, y: -0.11, z: 0}
+  m_LocalPosition: {x: 1.1451647, y: -1.3600049, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4163,23 +4163,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   List_EnemySpawner:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3146407726531933240}
+  - {fileID: 6564370924750937943}
+  - {fileID: 4044524908104813044}
+  - {fileID: 7266619803131448705}
+  - {fileID: 5937557693207904331}
+  - {fileID: 4751498465753266238}
+  - {fileID: 5842314136304151394}
+  - {fileID: 9199393584677840520}
   List_TrapSpawner:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1318817922560980577}
+  - {fileID: 2253068044120461236}
+  - {fileID: 7143641553481415465}
+  - {fileID: 4990826508655496068}
+  - {fileID: 3590973255321110521}
+  - {fileID: 8306018330285169438}
+  - {fileID: 5114546120888223930}
+  - {fileID: 2112687003773293631}
   PlayerSpawner: {fileID: 4314601426234541839}
   ExitDoor: {fileID: 5936253371563490219}
   CameraValue: 0
@@ -4299,7 +4299,7 @@ Transform:
   m_GameObject: {fileID: 3901127151783782505}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.41, y: 0.3, z: 0.09507769}
+  m_LocalPosition: {x: -9.49, y: 1.25, z: 0.09507769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4319,8 +4319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   INT_Fantassin: 1
   INT_Eyes: 0
-  SurelySpawn: 0
-  ChanceToSpawn: 2
+  SurelySpawn: 1
+  ChanceToSpawn: 0
   EnnemyPrefabs:
   - {fileID: 7662483983553767154, guid: fa4792e7805ac7a43a2a3be58b7ebe86, type: 3}
   - {fileID: 6552878737517331220, guid: 2aabcd7eafb6ef246abb75b828424e14, type: 3}
@@ -4369,7 +4369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df402407fed0af84caafc5ad0c0e137f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrapSpawnChanceMax: 2
+  TrapSpawnChanceMax: 1
   OBJ_Trap: {fileID: 6923543292850476662, guid: 0d1d0d059e10ca148b5938d160bb7748, type: 3}
 --- !u!1 &5010695295644949276
 GameObject:
@@ -4472,7 +4472,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
@@ -4487,12 +4487,12 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 15f895b498986344b8da962a7ef32ce9, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 1
     m_Data:
@@ -4790,7 +4790,7 @@ Transform:
   m_GameObject: {fileID: 5438542874578917041}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07, y: -7.08, z: 0.09507769}
+  m_LocalPosition: {x: -0.47, y: -6.63, z: 0.09507769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4811,7 +4811,7 @@ MonoBehaviour:
   INT_Fantassin: 1
   INT_Eyes: 0
   SurelySpawn: 0
-  ChanceToSpawn: 2
+  ChanceToSpawn: 3
   EnnemyPrefabs:
   - {fileID: 7662483983553767154, guid: fa4792e7805ac7a43a2a3be58b7ebe86, type: 3}
   - {fileID: 6552878737517331220, guid: 2aabcd7eafb6ef246abb75b828424e14, type: 3}
@@ -4842,7 +4842,7 @@ Transform:
   m_GameObject: {fileID: 5486291860130431835}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.2, y: -0.72, z: 0.09507769}
+  m_LocalPosition: {x: -11.45, y: 0.36, z: 0.09507769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4862,8 +4862,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   INT_Fantassin: 1
   INT_Eyes: 0
-  SurelySpawn: 0
-  ChanceToSpawn: 2
+  SurelySpawn: 1
+  ChanceToSpawn: 0
   EnnemyPrefabs:
   - {fileID: 7662483983553767154, guid: fa4792e7805ac7a43a2a3be58b7ebe86, type: 3}
   - {fileID: 6552878737517331220, guid: 2aabcd7eafb6ef246abb75b828424e14, type: 3}
