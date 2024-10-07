@@ -15,16 +15,15 @@ public class GetFacing : MonoBehaviour
     public enum MyEnum
     {
         Looking_Up,
-        
+        // 0
         Looking_UpLeft,
         Looking_Left,
-        
         Looking_DownLeft,
+        // 3
         Looking_Down,
-        
         Looking_DownRight,
         Looking_Right,
-        
+        // 6
         Looking_UpRight,
         Looking_Null,
     }

@@ -9,26 +9,45 @@ public class EnemyAttackController : MonoBehaviour
     private EnnemyData EnnemyData;
     private PlayerController PlayerController;
 
-    private void Awake()
+    public Animator SoliderAnim;
+
+    private bool PlayerHere;
+
+
+    private void Start()
     {
         EnnemyData = transform.parent.transform.parent.GetComponent<EnemyDataController>().enemyData;
         ResetTimer();
         PlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
+    private void Update()
+    {
+        if (PlayerHere)
+        {
+            ReduceTimer();
+        }
+        else
+        {
+            ResetTimer();
+            if(SoliderAnim == null){return;}
+            SoliderAnim.SetBool("LoadingAttack", false);
+        }
+    }
+    
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Player" || other.tag == "PlayerBool")
         {
-            ReduceTimer();
+            PlayerHere = true;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player" || other.tag == "PlayerBool")
         {
-            ResetTimer();
+            PlayerHere = false;
         }
     }
 
@@ -37,11 +56,17 @@ public class EnemyAttackController : MonoBehaviour
         if (TimerAttack > 0)
         {
             TimerAttack -= Time.deltaTime;
+            
+            if(SoliderAnim == null){return;}
+            SoliderAnim.SetBool("LoadingAttack", true);
         }
         else
         {
             DamagePlayer();
             ResetTimer();
+            
+            if(SoliderAnim == null){return;}
+            SoliderAnim.SetBool("LoadingAttack", false);
         }
     }
     
@@ -49,10 +74,12 @@ public class EnemyAttackController : MonoBehaviour
     public void ResetTimer()
     {
         TimerAttack = EnnemyData.Ennemy_AttackWindow;
-        Debug.LogError("TimerAttack = "+ TimerAttack);
     }
     private void DamagePlayer()
     {
         PlayerController.GetDamage(EnnemyData, transform.transform.position);
+
+        if(SoliderAnim == null){return;}
+        SoliderAnim.SetTrigger("Attack");
     }
 }

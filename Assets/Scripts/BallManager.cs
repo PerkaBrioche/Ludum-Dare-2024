@@ -57,19 +57,26 @@ public class BallManager : MonoBehaviour
         LifeBallImage.UpdateLife(LIST_Ball.Count);
     }
 
-    public void BallFall()
+    public void BallFall(Transform FallPositon)
     {
         if (LIST_Ball.Count > 1)
         {
-            LIST_Ball[LIST_Ball.Count-1].Fall();
+            LIST_Ball[LIST_Ball.Count-1].Fall(FallPositon);
             LIST_Ball.RemoveAt(LIST_Ball.Count -1);
+            
         }
         else
         {
-            LIST_Ball[0].Fall();
-            PlayerController.Instance.Dead();
-            LIST_Ball.RemoveAt(LIST_Ball.Count);
+            LIST_Ball[0].Fall(LIST_Ball[0].transform);
+            LIST_Ball.RemoveAt(0);
+            StartCoroutine(WaitForAnim());
         }
+        LifeBallImage.UpdateLife(LIST_Ball.Count);
+    }
 
+    private IEnumerator WaitForAnim()
+    {
+        yield return new WaitForSeconds(1);
+        PlayerController.Instance.Dead();
     }
 }

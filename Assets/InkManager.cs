@@ -60,10 +60,8 @@ public class InkManager : MonoBehaviour
             Ink = Palier[ActualPalier] -Palier[ActualPalier-1];
             print(ActualPalier + " - " +(ActualPalier-1));
         }
-
         ActualPalier--;
         SmoothSlider.NewValue(Palier[ActualPalier+1], Palier[ActualPalier]);
-        
         if(fall){return;}
         BallManager.Instance.DestroyBall();
     }

@@ -8,9 +8,9 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private GameObject OBJ_Rotate;
     [SerializeField] private BoxCollider2D COLLIDER2D_TriggerAttack;
     private GetFacing GetFacing;
-
     public GameObject OBJ_Attack;
-
+    public Animator ANIM_PlayerAnim;
+    
     /// <summary>
     /// ////////////////
     /// </summary>
@@ -43,8 +43,13 @@ public class PlayerAttackManager : MonoBehaviour
 
     private void ApplyRotation()
     {
-        var ActualRotation = OBJ_Rotate.transform.rotation;
-        OBJ_Rotate.transform.rotation = Quaternion.Euler(ActualRotation.x, ActualRotation.y, LIST_RotationList[GetFacing.ReturnFaceIndex()]);
+        if (GetFacing.ReturnFaceIndex() != 8)
+        {
+            var ActualRotation = OBJ_Rotate.transform.rotation;
+            OBJ_Rotate.transform.rotation = Quaternion.Euler(ActualRotation.x, ActualRotation.y, LIST_RotationList[GetFacing.ReturnFaceIndex()]);
+            ANIM_PlayerAnim.SetInteger("AnimState", GetFacing.ReturnFaceIndex());
+        }
+
     }
 
     private IEnumerator Attack()
