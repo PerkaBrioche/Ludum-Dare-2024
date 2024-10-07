@@ -11,5 +11,10 @@ public class HandController : MonoBehaviour
         {
             other.GetComponent<EnnemyController>().Die();
         }
+
+        if (other.tag == "Player")
+        {
+            other.GetComponent<PlayerController>().Dead();
+        }
     }
 }
