@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
@@ -42,12 +43,25 @@ public class BallController : MonoBehaviour
         return target.TransformPoint(new Vector2(space, space));
     }
 
-    public void Fall()
+    public void Fall(Transform FallPositon)
     {
+        transform.position = FallPositon.position;
         var rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 1;
-        spriteRenderer.sortingOrder = -1;
+        spriteRenderer.sortingOrder = -3;
         Destroy(gameObject,3);
         Following = false;
+        StartCoroutine(DiseapearAlpha());
+    }
+
+    private IEnumerator DiseapearAlpha()
+    {
+        float CurrentAlpha = 1;
+        while (CurrentAlpha > 0)
+        {
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, CurrentAlpha);
+            CurrentAlpha -= Time.deltaTime/1.5f;
+            yield return null;
+        }
     }
 }

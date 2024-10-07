@@ -18,7 +18,10 @@ public class EyesController : MonoBehaviour
 
     public SpriteRenderer SpriteRendererTest;
     public BoxCollider2D ColliderAttack;
+    public SpriteController SpriteController;
     private bool CheckingEyes;
+
+    private bool LaunchClosingEyes;
     
     
     
@@ -50,32 +53,35 @@ public class EyesController : MonoBehaviour
             {
                 chargeSpeed = 0f;
                 isDecelerating = false;
+                CloseEyes();
             }
             transform.position += chargeDirection * chargeSpeed * Time.deltaTime;
-            CloseEyes();
         }
         ColliderAttack.enabled = isCharging;
-
         if (CheckingEyes)
         {
-            OpenEyes();
+            if (PlayerController.Instance.IsMoving())
+            {
+                Attaque();
+                CheckingEyes = false;
+                return;
+            }
+
+            if (LaunchClosingEyes)
+            {
+                LaunchClosingEyes = false;
+                StartCoroutine(StartClosingEyes());
+            }
         }
     }
 
     private void OpenEyes()
     {
-        if (PlayerController.Instance.IsMoving())
-        {
-            StopAllCoroutines();
-            Attaque();
-            CheckingEyes = false;
-            return;
-        }
-        StartCoroutine(StartClosingEyes());
+
     }
     private void CloseEyes()
     {
-        SpriteRendererTest.color = Color.grey;
+        SpriteController.UpdateSprite(0);
         StartCoroutine(StartOpeningEyes());
     }
 
@@ -95,11 +101,13 @@ public class EyesController : MonoBehaviour
         CheckingEyes = false;
     }
     private IEnumerator StartOpeningEyes()
-    {
+    { 
         yield return new WaitForSeconds(TimeEyesClose);
-        SpriteRendererTest.color = Color.yellow;
+        SpriteController.UpdateSprite(1);
         yield return new WaitForSeconds(0.5f);
+        SpriteController.UpdateSprite(2);
         CheckingEyes = true;
+        LaunchClosingEyes = true;
     }
     
 }

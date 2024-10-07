@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea97bbfec53220489a576866c053430, type: 3}
   m_Name: Eyes
   m_EditorClassIdentifier: 
-  Ennemy_Life: 30
+  Ennemy_Life: 15
   Ennemy_AttackWindow: 0
-  Ennemy_Damage: 4
+  Ennemy_Damage: 10
   Ennemy_Speed: 10
   knockbackForce: 35

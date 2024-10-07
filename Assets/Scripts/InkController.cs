@@ -10,13 +10,16 @@ public class InkController : MonoBehaviour
     [NonSerialized] public Transform TRA_Space;
     private float FLO_CurrentAlpha;
     private float FLO_SecondAlpha;
-
+    
     private BoxCollider2D BoxCollider2D;
+
+    public List<Sprite> LIST_Sprite;
     
     
     
     private void Start()
     {
+        GetComponent<SpriteRenderer>().sprite = LIST_Sprite[Random.Range(0,LIST_Sprite.Count)];
         BoxCollider2D = GetComponent<BoxCollider2D>();
         TRA_Target = BallManager.Instance.LIST_Ball[0].transform;
         StartCoroutine(SpaceU());

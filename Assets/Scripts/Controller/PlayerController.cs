@@ -147,7 +147,6 @@ public class PlayerController : MonoBehaviour
         VolumeManger.Instance.PlayAnim(2);
         TimeManager.instance.SlowMotion(0, 1);
     }
-
     public void GetInk()
     {
         Instantiate(OBJ_InkParticule, BallManager.Instance.LIST_Ball[0].transform.position, OBJ_InkParticule.transform.rotation,

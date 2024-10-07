@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea97bbfec53220489a576866c053430, type: 3}
   m_Name: Fantassin
   m_EditorClassIdentifier: 
-  Ennemy_Life: 20
-  Ennemy_AttackWindow: 1
-  Ennemy_Damage: 4
+  Ennemy_Life: 15
+  Ennemy_AttackWindow: 0.5
+  Ennemy_Damage: 8
   Ennemy_Speed: 3
   knockbackForce: 35
