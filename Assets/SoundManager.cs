@@ -8,6 +8,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     public AudioSource SOURCE_Audio;
+    public AudioSource SOURCE_Musique;
+    
 
     private void Awake()
     {
@@ -42,6 +44,14 @@ public class SoundManager : MonoBehaviour
     public void PlaySoundClip(AudioClip Clip)
     {
         SOURCE_Audio.PlayOneShot(Clip);
+    }
+
+    public void stopSound()
+    {
+        SOURCE_Audio.Stop();
+        SOURCE_Musique.Stop();
+        SOURCE_Audio.enabled = false;
+        SOURCE_Musique.enabled = false;
     }
     
     

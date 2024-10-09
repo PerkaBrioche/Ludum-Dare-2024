@@ -50,8 +50,9 @@ public class MapManager : MonoBehaviour
         {
             DestroyInfo(OldMap.GetComponent<GridManager>());
         }
-        
-        OldMap = Instantiate(LIST_MapInstance[Random.Range(0, LIST_MapInstance.Count)], MapSpawnerTransform.position, Quaternion.Euler(0, 0, 0), MapSpawnerTransform);
+
+        var RandomMap = Random.Range(0, LIST_MapInstance.Count);
+        OldMap = Instantiate(LIST_MapInstance[RandomMap], LIST_MapInstance[RandomMap].transform.position, Quaternion.Euler(0, 0, 0), MapSpawnerTransform);
         InitializeMapsParameters();
         StartCoroutine(ScanPathfindingGrid());
     }

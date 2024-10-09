@@ -1,17 +1,81 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public StoreDataPlayer StoreDataPlayer;
+    public TMP_InputField FIELD;
+
+    public List<GameObject> MenuList;
+    public List<GameObject> LeaéderboarList;
+
+    public Animation ANIM_Field;
+
+    private bool LeaderboardShown;
+
+    private void Start()
+    {
+        if (StoreDataPlayer.PlayerName != "")
+        {
+            FIELD.text = StoreDataPlayer.PlayerName;
+        }
+    }
+
     public void LoadScene(int Index)
     {
-        SceneManager.LoadScene(Index);
+        if (FIELD.text.Length > 0)
+        {
+            SceneManager.LoadScene(Index);
+            StoreDataPlayer.PlayerName = FIELD.text;
+        }
+        else
+        {
+            ANIM_Field.Play();
+        }
     }
-    
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Leaderboard()
+    {
+        LeaderboardShown =! LeaderboardShown;
+        if (LeaderboardShown)
+        {
+            HideLeaderboard();
+        }
+        else
+        {
+            ShowLeaderboard();
+        }
+    }
+
+    public void ShowLeaderboard()
+    {
+        for (int i = 0; i < MenuList.Count; i++)
+        {
+            MenuList[i].SetActive(false);
+        }        
+        for (int i = 0; i < LeaéderboarList.Count; i++)
+        {
+            LeaéderboarList[i].SetActive(true);
+        }
+    }
+    
+    public void HideLeaderboard()
+    {
+        for (int i = 0; i < MenuList.Count; i++)
+        {
+            MenuList[i].SetActive(true);
+        }        
+        for (int i = 0; i < LeaéderboarList.Count; i++)
+        {
+            LeaéderboarList[i].SetActive(false);
+        }
     }
 }

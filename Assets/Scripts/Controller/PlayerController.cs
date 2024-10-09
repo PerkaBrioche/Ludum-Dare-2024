@@ -1,4 +1,5 @@
 using System.Collections;
+using Dan.Main;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -128,7 +129,6 @@ public class PlayerController : MonoBehaviour
         if (InkManager.Instance.Ink <= 0)
         {
             DeadPlayer = true;
-            TimeManager.instance.SlowMotion(0.3f,0.5f);
             Dead();
         }
     }
@@ -159,7 +159,10 @@ public class PlayerController : MonoBehaviour
     {
         OBJ_UserInterface.SetActive(false);
         VolumeManger.Instance.PlayAnim(2, true);
+        SoundManager.Instance.stopSound();
         ANIM_TextDeath.Play("ShowTextDeath");
+        Cursor.lockState = CursorLockMode.Confined;
+        LeaderBoardManager.Instance.UploadScore(StoreDataPlayer.Instance.PlayerName, MapManager.Instance.StageCompleted);
         Destroy(gameObject);
     }
     public void GetInk()
